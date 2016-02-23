@@ -52,7 +52,6 @@ public class MainFragment extends Fragment {
                 getActivity().invalidateOptionsMenu();
             }
 
-            //Todo : Mengurangi nilai alpha toolbar ketika drawer di-slide
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);

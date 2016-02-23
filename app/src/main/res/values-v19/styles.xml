@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Todo: 1. Menambahkan style baru untuk versi android kitkat-->
 <resources>
-    <!-- This if for lollipop + -->
     <style name="AppTheme" parent="AppTheme.Base">
-        <!--Todo: 3. Menambahkan window translucent lollipop + -->
+        <!--Todo: 2. Menambahkan window translucent kitkat -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
-
 </resources>

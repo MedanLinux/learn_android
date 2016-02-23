@@ -7,6 +7,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--Todo 9. Memasukkan view ke dalam activity sebagai background status bar -->
+    <include
+        layout="@layout/statusbar"/>
+
     <include
         android:id="@+id/mainToolbar"
         layout="@layout/toolbar" />
@@ -20,13 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.labsgn.labsgn_learn_android.MainActivity">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:background="@color/colorPrimary"
-                android:text="@string/activity1" />
 
         </FrameLayout>
 
