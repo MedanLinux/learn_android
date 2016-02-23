@@ -34,7 +34,7 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.main_fragment, container, false);
     }
 
-    public void setUp(DrawerLayout drawerLayout, Toolbar toolbar) {
+    public void setUp(DrawerLayout drawerLayout, final Toolbar toolbar) {
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(),mDrawerLayout,toolbar, R.string.drawer_open, R.string.drawer_close){
 
@@ -50,6 +50,15 @@ public class MainFragment extends Fragment {
                 super.onDrawerClosed(drawerView);
                 //Redraw option menu when the drawer closed
                 getActivity().invalidateOptionsMenu();
+            }
+
+            //Todo : Mengurangi nilai alpha toolbar ketika drawer di-slide
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                if (slideOffset < 0.6 ) {
+                    toolbar.setAlpha(1 - slideOffset);
+                }
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
