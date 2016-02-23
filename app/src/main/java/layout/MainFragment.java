@@ -44,14 +44,24 @@ public class MainFragment extends Fragment {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                //Redraw option menu when the drawer opened
+                getActivity().invalidateOptionsMenu();
             }
 
             // Todo: 5. (Answer) Invalidate Menu Activity ketika drawer ditutup.
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                //Redraw option menu when the drawer closed
+                getActivity().invalidateOptionsMenu();
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
     }
 }
