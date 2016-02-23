@@ -4,7 +4,6 @@
     <string name="activity1">Activity 1</string>
     <string name="sub_activity1">Sub Activity 1</string>
 
-    <!-- Todo: 3. (Answer) Buat sebuah instance dari ActionBarDrawerToggle kemudian tentukan activity-nya (MainActivity), objek DrawerLayout, Icon humberger Toolbar, Strings "Open" & "Close" -->
-   <string name="drawer_open">Open</string>
-   <string name="drawer_close">Close</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>

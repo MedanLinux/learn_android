@@ -18,7 +18,6 @@ import com.labsgn.labsgn_learn_android.R;
  */
 public class MainFragment extends Fragment {
 
-    //Todo: 3. (Answer) Buat sebuah instance dari ActionBarDrawerToggle kemudian tentukan activity-nya (MainActivity), objek DrawerLayout, Icon humberger Toolbar, Strings "Open" & "Close"
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
@@ -35,12 +34,10 @@ public class MainFragment extends Fragment {
         return inflater.inflate(R.layout.main_fragment, container, false);
     }
 
-    //Todo: 3. (Answer) Buat sebuah instance dari ActionBarDrawerToggle kemudian tentukan activity-nya (MainActivity), objek DrawerLayout, Icon humberger Toolbar, Strings "Open" & "Close"
     public void setUp(DrawerLayout drawerLayout, Toolbar toolbar) {
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(),mDrawerLayout,toolbar, R.string.drawer_open, R.string.drawer_close){
 
-            // Todo: 4. (Answer) Invalidate Menu Option ketika drawer dibuka untuk menandakan jika ada perubahan.
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -48,7 +45,6 @@ public class MainFragment extends Fragment {
                 getActivity().invalidateOptionsMenu();
             }
 
-            // Todo: 5. (Answer) Invalidate Menu Activity ketika drawer ditutup.
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);

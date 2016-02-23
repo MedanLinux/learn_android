@@ -10,14 +10,6 @@ import android.view.MenuItem;
 
 import layout.MainFragment;
 
-/** Step to setup navigation drawer
-        * Todo: 1. Tambahkan drawer layout dengan 2 child, (1)main content, (2)drawer content (done: activity_main.xml)
-        * Todo: 2. Inisialisasi DrawerLayout di dalam code.
-        * Todo: 3. Buat sebuah instance dari ActionBarDrawerToggle kemudian tentukan activity-nya (MainActivity), objek DrawerLayout, Icon humberger Toolbar, Strings "Open" & "Close"
-        * Todo: 4. Invalidate Menu Option ketika drawer dibuka untuk menandakan jika ada perubahan.
-        * Todo: 5. Invalidate Menu Activity ketika drawer ditutup.
-*/
-
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
@@ -58,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        //Todo: 2. (Answer) Inisialisasi DrawerLayout di dalam code.
         MainFragment drawerFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
         drawerFragment.setUp((DrawerLayout)findViewById(R.id.mainDrawer), toolbar);
     }
