@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--Todo 9. Memasukkan view ke dalam activity sebagai background status bar -->
-    <include
-        layout="@layout/statusbar"/>
-
-    <include
-        android:id="@+id/mainToolbar"
-        layout="@layout/toolbar" />
+    <include layout="@layout/statusbar" />
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/mainDrawer"
@@ -24,6 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="com.labsgn.labsgn_learn_android.MainActivity">
+
+            <!--Status bar di pindah ke dalam -->
+            <include
+                android:id="@+id/mainToolbar"
+                layout="@layout/toolbar" />
 
         </FrameLayout>
 

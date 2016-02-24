@@ -1,7 +1,23 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Todo: Opsional, menambahkan gambar ke dalam navigation drawer  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.MainFragment"
-    android:background="@color/colorDrawerBackground">
-</RelativeLayout>
+    android:background="@color/colorDrawerBackground"
+    tools:context="layout.MainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/drawer_margin_top"
+            android:layout_marginTop="@dimen/drawer_margin_top"
+            android:src="@drawable/ic_android_white_48dp" />
+    </LinearLayout>
+</FrameLayout>

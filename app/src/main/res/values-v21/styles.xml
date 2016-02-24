@@ -2,7 +2,6 @@
 <resources>
     <!-- This if for lollipop + -->
     <style name="AppTheme" parent="AppTheme.Base">
-        <!--Todo: 3. Menambahkan window translucent lollipop + -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 

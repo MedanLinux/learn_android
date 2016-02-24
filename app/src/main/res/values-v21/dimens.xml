@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Todo 7. Menambahkan ukuran width view yang digunakan sebagai status bar untuk lollipop+-->
     <dimen name="toolbar_padding_top">24dp</dimen>
 </resources>

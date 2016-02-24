@@ -5,9 +5,10 @@
     <dimen name="default_margin">5dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="drawer_margin_top">24dp</dimen>
+
     <dimen name="drawer_width">260dp</dimen>
 
-    <!--Todo 5. Menambahkan ukuran width view yang digunakan sebagai status bar untuk pre kitkat-->
     <dimen name="toolbar_padding_top">0dp</dimen>
 
 </resources>
