@@ -3,6 +3,12 @@ Repository yang berisi pembelajaran android, silahkan cek branch untuk topik pem
 ##### Note
 Di dalam setiap branch sudah diberikan nama commit sesuai studi kasus, kemudian cek "TODO" pada android studio untuk melihat keterangan step by step penyelesaian kasus.
 
+##### How To Learn
+- Cek branch : ```git branch```
+- Masuk ke branch : ex. ```git checkout Material_Design```
+- Cek log commit : ```git log --oneline```
+- Kembali ke commit terakhir : ```git checkout Material_Design```
+
 ### Minimum Requirement
 - Android Studio versi beta 5
 - Java development kit (jdk) 1.7
