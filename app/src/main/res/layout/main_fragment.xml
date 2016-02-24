@@ -1,5 +1,5 @@
-<!--Todo: Opsional, menambahkan gambar ke dalam navigation drawer  -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--Todo 2. Mengubah Framelayout menjadi RelativeLayout agar mudah di susun ke bawah -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +7,7 @@
     tools:context="layout.MainFragment">
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -20,4 +21,15 @@
             android:layout_marginTop="@dimen/drawer_margin_top"
             android:src="@drawable/ic_android_white_48dp" />
     </LinearLayout>
-</FrameLayout>
+
+    <!--Todo 3. Menambahkan RecyclerView untuk dijadikan list
+                kemudian jangan lupa memberi id & memposisikannya
+                di bawah LinearLayout "container" -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawerList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/container">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
