@@ -2,12 +2,12 @@ package com.labsgn.labsgn_learn_android;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,11 +18,14 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     private LayoutInflater inflater;
+    private Context context;
 
     List<Information> data = Collections.emptyList();
 
     public Adapter (Context context, List<Information> data){
-        inflater = LayoutInflater.from(context);
+        // Todo 1. Opsional, simpan context
+        this.context = context;
+        inflater = LayoutInflater.from(this.context);
         this.data = data;
     }
 
@@ -44,7 +47,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return data.size();
     }
 
-    //Todo 1. implements OnClickListener
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView title;
         private ImageView icon;
@@ -54,15 +56,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             title = (TextView) itemView.findViewById(R.id.recylcerTitle);
             icon  = (ImageView) itemView.findViewById(R.id.recyclerIcon);
 
-            //Todo 3. Set event onClick terhadap view
             title.setOnClickListener(this);
             icon.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            //Todo 2. Mendeteksi posisi item yang di klik
-            Log.i("TAG", " : item clicked at position "+getAdapterPosition());
+            //Log.i("TAG", " : item clicked at position "+getAdapterPosition());
+            //Todo 2. Toast notifikasi posisi ke layar
+            Toast.makeText(context," Item clicked at position "+getAdapterPosition(),Toast.LENGTH_SHORT).show();
         }
     }
 
