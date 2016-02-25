@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by rhony on 24/02/16.
+ *
  */
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
@@ -25,12 +26,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         this.context = context;
         inflater = LayoutInflater.from(this.context);
         this.data = data;
-    }
-
-    //Todo 1. Membuat method untuk menghapus data dari recyclerView
-    public void delete(int position){
-        data.remove(position);
-        notifyItemRemoved(position);
     }
 
     @Override
@@ -60,14 +55,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             title = (TextView) itemView.findViewById(R.id.recylcerTitle);
             icon  = (ImageView) itemView.findViewById(R.id.recyclerIcon);
 
-            title.setOnClickListener(this);
-            icon.setOnClickListener(this);
+            /*Todo 12. Opsional, Tidak perlu listerner lagi karena sudah diterapkan di MainFragment custom click listener
+              implements View.OnClickListener juga boleh di hapus
+
+            //title.setOnClickListener(this);
+            //icon.setOnClickListener(this);
+            */
         }
 
         @Override
         public void onClick(View v) {
-            //Todo 2. Jalankan method untuk menghapus data saat event Click
-            delete(getAdapterPosition());
         }
     }
 
