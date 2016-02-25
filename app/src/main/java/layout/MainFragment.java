@@ -24,12 +24,10 @@ import java.util.List;
  */
 public class MainFragment extends Fragment {
 
-    //Todo 4. Menambahkan instance RecyclerView milik android.v7
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-    //Todo 20. Membuat Instance variable adapter baru
     private Adapter myAdapter;
 
     public MainFragment() {
@@ -40,11 +38,9 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Todo 5. Menghubungkan instance recyclerView dengan recyclerView yang ada didalam main_fragment
         View layout = inflater.inflate(R.layout.main_fragment, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
 
-        //Todo 24. Simpan instance myAdapter kemudian set adapter ke recyclerView
         myAdapter = new Adapter(getActivity(), getData());
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -52,13 +48,11 @@ public class MainFragment extends Fragment {
         return layout;
     }
 
-    //Todo 21. Membuat method untuk mengambil data
     public static List<Information> getData() {
         List<Information> data = new ArrayList<>();
         int icons[] = {R.drawable.ic_looks_one_black_48dp, R.drawable.ic_looks_two_black_48dp, R.drawable.ic_looks_3_black_48dp};
         String titles[] ={"Dji","Sam","Soe"};
 
-        //Todo 22. Melakukan perulangan untuk menyimpan data ke dalam Information
         for (int i = 0; i<titles.length && i<icons.length; i++){
             Information current = new Information();
             current.iconId = icons[i];

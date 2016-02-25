@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Todo 10. Membuat custom view untuk content dari recyclerView yang dipakai main drawer-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,11 +8,9 @@
     <ImageView
         android:id="@+id/recyclerIcon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_looks_one_black_48dp" />
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/recylcerTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lorem_ipsum"/>
+        android:layout_height="wrap_content"/>
 </LinearLayout>
