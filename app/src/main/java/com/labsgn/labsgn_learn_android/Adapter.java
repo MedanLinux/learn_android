@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,10 +22,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     List<Information> data = Collections.emptyList();
 
     public Adapter (Context context, List<Information> data){
-        // Todo 1. Opsional, simpan context
         this.context = context;
         inflater = LayoutInflater.from(this.context);
         this.data = data;
+    }
+
+    //Todo 1. Membuat method untuk menghapus data dari recyclerView
+    public void delete(int position){
+        data.remove(position);
+        notifyItemRemoved(position);
     }
 
     @Override
@@ -62,9 +66,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         @Override
         public void onClick(View v) {
-            //Log.i("TAG", " : item clicked at position "+getAdapterPosition());
-            //Todo 2. Toast notifikasi posisi ke layar
-            Toast.makeText(context," Item clicked at position "+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+            //Todo 2. Jalankan method untuk menghapus data saat event Click
+            delete(getAdapterPosition());
         }
     }
 
