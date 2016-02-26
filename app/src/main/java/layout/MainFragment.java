@@ -49,10 +49,8 @@ public class MainFragment extends Fragment {
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //Todo 4. Menambahkan listener addOnItemToucListener
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
                 recyclerView, new ClickListener() {
-            //Todo 11. Membuat toast untuk mengetahui kapan event dipanggil
             @Override
             public void onClick(View view, int position) {
                 Toast.makeText(getActivity(),"onClick called at position : "+position, Toast.LENGTH_SHORT).show();
@@ -116,31 +114,24 @@ public class MainFragment extends Fragment {
         });
     }
 
-    //Todo 1. Membuat class baru yang meng-implements RecyclerView.OnItemTouchListener
     static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
 
-        //Todo 5.
         private GestureDetector gestureDetector;
 
-        //Todo 9.
         private ClickListener clickListener;
 
-        //Todo: 3. Membuat contructor dengan 3 parameter yg dibutuhkan
         public RecyclerTouchListener(Context context, final RecyclerView recyclerView,
                                      final ClickListener clickListener){
             this.clickListener = clickListener;
 
-            //Todo 6. Konfigurasi gestureDetector
             gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener(){
                 @Override
                 public boolean onSingleTapUp(MotionEvent e) {
-                    //Todo 7. Ubah menjadi true untuk mengambil alih event
                     return true;
                 }
 
                 @Override
                 public void onLongPress(MotionEvent e) {
-                    //Todo 8. onLongClick
                     View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
                     if (child!=null && clickListener !=null){
                         clickListener.onLongClick(child, recyclerView.getChildLayoutPosition(child));
@@ -152,7 +143,6 @@ public class MainFragment extends Fragment {
 
         @Override
         public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-            //Todo 10. onClick
             View child = rv.findChildViewUnder(e.getX(), e.getY());
             if (child !=null && clickListener != null && gestureDetector.onTouchEvent(e)){
                 clickListener.onClick(child, rv.getChildLayoutPosition(child));
@@ -172,9 +162,6 @@ public class MainFragment extends Fragment {
 
     }
 
-    /*Todo 2. Membuat interface yang mendukung click & long click yang menandakan
-      bahwa view di click pada posisi tertentu
-      */
     public interface ClickListener{
         void onClick(View view, int position);
         void onLongClick(View view, int position);

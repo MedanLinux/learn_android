@@ -6,9 +6,14 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="drawer_margin_top">24dp</dimen>
-
     <dimen name="drawer_width">260dp</dimen>
+    <dimen name="drawer_padding_start">16dp</dimen>
+    <dimen name="drawer_padding_end">16dp</dimen>
 
     <dimen name="toolbar_padding_top">0dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+
+    <dimen name="recycler_row_heigth">48dp</dimen>
+    <dimen name="recycler_margin_title_start">72dp</dimen>
 
 </resources>

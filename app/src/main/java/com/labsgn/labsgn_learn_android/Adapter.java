@@ -54,13 +54,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.recylcerTitle);
             icon  = (ImageView) itemView.findViewById(R.id.recyclerIcon);
-
-            /*Todo 12. Opsional, Tidak perlu listerner lagi karena sudah diterapkan di MainFragment custom click listener
-              implements View.OnClickListener juga boleh di hapus
-
-            //title.setOnClickListener(this);
-            //icon.setOnClickListener(this);
-            */
         }
 
         @Override
