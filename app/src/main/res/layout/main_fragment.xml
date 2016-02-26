@@ -24,6 +24,11 @@
             android:paddingStart="@dimen/drawer_padding_start"
             android:src="@drawable/ic_android_white_48dp" />
 
+        <TextView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
