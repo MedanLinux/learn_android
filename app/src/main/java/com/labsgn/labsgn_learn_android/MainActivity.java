@@ -2,11 +2,12 @@ package com.labsgn.labsgn_learn_android;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -73,15 +74,18 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
 
         slidingTabLayout = (SlidingTabLayout) findViewById(R.id.mainSlidingTab);
-        //Todo 3.
         slidingTabLayout.setDistributeEvenly(true);
         slidingTabLayout.setCustomTabView(R.layout.custom_tab, R.id.tabText);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            slidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent,null));
+        }else {
+            slidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
+        }
         slidingTabLayout.setViewPager(viewPager);
 
     }
 
-    class MainPagerAdapter extends FragmentPagerAdapter {
-        //Todo 1.
+    class MainPagerAdapter extends FragmentStatePagerAdapter {
         private int[] icon = {R.drawable.ic_home_black_36dp, R.drawable.ic_assignment_black_36dp, R.drawable.ic_account_box_black_36dp};
         private String[] tabs = getResources().getStringArray(R.array.tabs);
 
@@ -90,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public CharSequence getPageTitle(int position) {
-            //Todo 2.
             Drawable drawable;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 drawable = getResources().getDrawable(icon[position], null);
