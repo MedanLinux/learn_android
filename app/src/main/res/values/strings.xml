@@ -6,8 +6,7 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-    
-    <!--Todo 11. Membuat array string untuk tab -->
+
     <string-array name="tabs">
         <item>Tab 1</item>
         <item>Tab 2</item>

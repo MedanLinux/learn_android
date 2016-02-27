@@ -24,14 +24,11 @@
                 android:id="@+id/mainToolbar"
                 layout="@layout/toolbar" />
 
-            <!--Todo 3. Menambahkan slidingTabLayout ke dalam activity -->
             <layout.SlidingTabLayout
                 android:id="@+id/mainSlidingTab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <!--Todo 4. Menambahkan pager untuk slidingTab, height jadi 0 dengan weight 1
-                        untuk mengambil sisa space layar yang tersedia-->
             <android.support.v4.view.ViewPager
                 android:id="@+id/mainViewPager"
                 android:layout_width="match_parent"
