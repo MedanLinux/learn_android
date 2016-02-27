@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 /**
  * Created by rhony on 27/02/16.
- * Todo 5. Membuat class baru yang extends v4.widget.Fragment
  */
 public class MyFragment extends Fragment {
 

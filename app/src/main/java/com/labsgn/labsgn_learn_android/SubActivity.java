@@ -1,5 +1,7 @@
 package com.labsgn.labsgn_learn_android;
 
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +17,7 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 
-//Todo 4. Implements materialTabListener
+
 public class SubActivity extends AppCompatActivity implements MaterialTabListener{
 
     private Toolbar toolbar;
@@ -37,11 +39,10 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Todo 3.
+
         materialTab = (MaterialTabHost) findViewById(R.id.subMaterialTab);
         viewPager = (ViewPager) findViewById(R.id.subViewPager);
 
-        //Todo 7
         viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
             @Override
@@ -50,12 +51,12 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
             }
         });
 
-        //Todo 9
         ViewPagerAdapter adapter = (ViewPagerAdapter) viewPager.getAdapter();
         for (int i = 0; i < adapter.getCount(); i++){
             materialTab.addTab(
                     materialTab.newTab()
-                    .setText(adapter.getPageTitle(i))
+                            //Todo 4.
+                    .setIcon(adapter.getIcon(i))
                     .setTabListener(this)
             );
         }
@@ -80,7 +81,6 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
         }
     }
 
-    //Todo 8
     @Override
     public void onTabSelected(MaterialTab tab) {
         viewPager.setCurrentItem(tab.getPosition(), true);
@@ -96,9 +96,10 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
 
     }
 
-    //Todo 6. Gunakan fragment v4 ketika mengimport
     private class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
+        //Todo 2.
+        int icons[] = {R.drawable.ic_home_black_36dp, R.drawable.ic_account_box_black_36dp, R.drawable.ic_assignment_black_36dp};
 
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -117,6 +118,17 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
         @Override
         public CharSequence getPageTitle(int position) {
             return getResources().getStringArray(R.array.tabs)[position];
+        }
+
+        //Todo 3.
+        private Drawable getIcon(int position){
+            Drawable returnedDrawable;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                returnedDrawable = getResources().getDrawable(icons[position],null);
+            }else {
+                returnedDrawable = getResources().getDrawable(icons[position]);
+            }
+            return returnedDrawable;
         }
     }
 }

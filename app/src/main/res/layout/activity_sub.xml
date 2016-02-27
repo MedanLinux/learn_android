@@ -13,14 +13,15 @@
         android:id="@+id/subToolbar"
         layout="@layout/toolbar" />
 
-    <!--Todo 2. -->
+    <!--Todo 1. Menggunakan Tab Icon-->
     <it.neokree.materialtabs.MaterialTabHost
         android:id="@+id/subMaterialTab"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:accentColor="@color/colorAccent"
-        app:primaryColor="@color/colorPrimary"
-        app:textColor="#FFFFFF" />
+        app:hasIcons="true"
+        app:iconColor="#FFFFFF"
+        app:primaryColor="@color/colorPrimary" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/subViewPager"
@@ -36,6 +37,6 @@
         android:layout_margin="@dimen/default_margin"
         android:background="@color/colorPrimary"
         android:text="Percobaan Library Sliding Tab"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF" />
 
 </LinearLayout>
