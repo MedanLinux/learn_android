@@ -1,6 +1,5 @@
 package com.labsgn.labsgn_learn_android;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.actionSettings:
                 return true;
             case R.id.navigate:
-                startActivity(new Intent(this, SubActivity.class));
+                //startActivity(new Intent(this, SubActivity.class));
                 return true;
 
             default:

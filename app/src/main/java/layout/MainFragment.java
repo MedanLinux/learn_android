@@ -2,6 +2,7 @@ package layout;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.labsgn.labsgn_learn_android.Adapter;
 import com.labsgn.labsgn_learn_android.Information;
 import com.labsgn.labsgn_learn_android.R;
+import com.labsgn.labsgn_learn_android.SubActivity;
+import com.labsgn.labsgn_learn_android.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +56,15 @@ public class MainFragment extends Fragment {
                 recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(),"onClick called at position : "+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(),"onClick called at position : "+position, Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        startActivity(new Intent(getActivity(), SubActivity.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(getActivity(), Vector.class));
+                        break;
+                }
             }
 
             @Override
@@ -65,10 +76,10 @@ public class MainFragment extends Fragment {
         return layout;
     }
 
-    public static List<Information> getData() {
+    public List<Information> getData() {
         List<Information> data = new ArrayList<>();
         int icons[] = {R.drawable.ic_looks_one_black_48dp, R.drawable.ic_looks_two_black_48dp, R.drawable.ic_looks_3_black_48dp};
-        String titles[] ={"Dji","Sam","Soe"};
+        String titles[] = getResources().getStringArray(R.array.drawer_titles);
 
         for (int i = 0; i<titles.length && i<icons.length; i++){
             Information current = new Information();

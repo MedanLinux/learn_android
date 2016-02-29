@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.labsgn.labsgn_learn_android.SubActivity">
+    tools:context=".SubActivity">
 
     <include layout="@layout/statusbar" />
 
@@ -13,7 +13,6 @@
         android:id="@+id/subToolbar"
         layout="@layout/toolbar" />
 
-    <!--Todo 1. Menggunakan Tab Icon-->
     <it.neokree.materialtabs.MaterialTabHost
         android:id="@+id/subMaterialTab"
         android:layout_width="match_parent"
@@ -27,16 +26,6 @@
         android:id="@+id/subViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-    </android.support.v4.view.ViewPager>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin"
-        android:background="@color/colorPrimary"
-        android:text="Percobaan Library Sliding Tab"
-        android:textColor="#FFF" />
+        android:layout_weight="1"/>
 
 </LinearLayout>

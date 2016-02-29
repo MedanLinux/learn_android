@@ -15,5 +15,10 @@
         <item>Tab 5</item>
         <item>Tab 6</item>
     </string-array>
-    
+
+    <string-array name="drawer_titles">
+        <item>Cth Sliding Tab II </item>
+        <item>Cth Vector Drawable</item>
+    </string-array>
+
 </resources>

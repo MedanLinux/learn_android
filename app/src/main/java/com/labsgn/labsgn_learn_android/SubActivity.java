@@ -55,7 +55,6 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
         for (int i = 0; i < adapter.getCount(); i++){
             materialTab.addTab(
                     materialTab.newTab()
-                            //Todo 4.
                     .setIcon(adapter.getIcon(i))
                     .setTabListener(this)
             );
@@ -98,7 +97,6 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
 
     private class ViewPagerAdapter extends FragmentStatePagerAdapter{
 
-        //Todo 2.
         int icons[] = {R.drawable.ic_home_black_36dp, R.drawable.ic_account_box_black_36dp, R.drawable.ic_assignment_black_36dp};
 
         public ViewPagerAdapter(FragmentManager fm) {
@@ -120,7 +118,6 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
             return getResources().getStringArray(R.array.tabs)[position];
         }
 
-        //Todo 3.
         private Drawable getIcon(int position){
             Drawable returnedDrawable;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
