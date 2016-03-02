@@ -3,7 +3,6 @@ package com.labsgn.labsgn_learn_android;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -14,12 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import layout.MainFragment;
 import layout.SlidingTabLayout;
@@ -110,37 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return myMainFragment.getInstance(position);
+            return MyFragment.getInstance(position);
         }
 
         @Override
         public int getCount() {
             return 3;
-        }
-    }
-
-    public static class myMainFragment extends Fragment {
-
-        private TextView textView;
-
-        public static myMainFragment getInstance(int position) {
-            myMainFragment myFragment = new myMainFragment();
-            Bundle args = new Bundle();
-            args.putInt("position", position);
-            myFragment.setArguments(args);
-            return myFragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View layout = inflater.inflate(R.layout.main_fragment, container, false);
-            textView = (TextView) layout.findViewById(R.id.position);
-            Bundle bundle = getArguments();
-            if (bundle != null) {
-                textView.setText("Selected page : " + bundle.getInt("position"));
-            }
-
-            return super.onCreateView(inflater, container, savedInstanceState);
         }
     }
 }

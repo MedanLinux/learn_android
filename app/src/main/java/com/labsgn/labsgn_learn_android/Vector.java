@@ -7,7 +7,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-//Todo 2. Inisial class baru
 public class Vector extends AppCompatActivity {
 
     private Toolbar toolbar;
