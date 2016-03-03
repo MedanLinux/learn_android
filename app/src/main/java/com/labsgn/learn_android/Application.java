@@ -4,7 +4,6 @@ import android.content.Context;
 
 /**
  * Created by rhony on 02/03/16.
- * Todo 1. Setup instance application agar bisa di akses oleh VolleySingleton
  */
 public class Application extends android.app.Application {
     private static Application Instance;
@@ -15,11 +14,11 @@ public class Application extends android.app.Application {
         Instance = this;
     }
 
-    public static Application getAppInstance(){
+    public static Application getAppInstance() {
         return Instance;
     }
 
-    public static Context getAppContext(){
+    public static Context getAppContext() {
         return Instance.getApplicationContext();
     }
 }

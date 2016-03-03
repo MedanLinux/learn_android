@@ -44,7 +44,6 @@ public class MyFragment extends Fragment {
             textView.setText("Selected page : " + bundle.getInt("position"));
         }
 
-        //Todo 4. Setup requestQueue dari volleySingleton
         RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
 
         StringRequest request = new StringRequest(Request.Method.GET, url,

@@ -1,4 +1,4 @@
-package com.labsgn.learn_android.utlis;
+package com.labsgn.learn_android.pojo;
 
 /**
  * Created by rhony on 24/02/16.

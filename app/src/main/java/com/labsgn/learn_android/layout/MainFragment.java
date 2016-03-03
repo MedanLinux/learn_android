@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.labsgn.learn_android.utlis.Adapter;
-import com.labsgn.learn_android.utlis.Information;
+import com.labsgn.learn_android.pojo.Information;
 import com.labsgn.learn_android.R;
 import com.labsgn.learn_android.activity.SubActivity;
 import com.labsgn.learn_android.activity.VectorActivity;

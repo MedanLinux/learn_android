@@ -10,7 +10,6 @@ import com.labsgn.learn_android.Application;
 
 /**
  * Created by rhony on 02/03/16.
- * Todo 3. Setup singleton
  */
 public class VolleySingleton {
     private static VolleySingleton Instance = null;

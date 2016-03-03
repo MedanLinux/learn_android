@@ -24,22 +24,27 @@
                 android:id="@+id/mainToolbar"
                 layout="@layout/toolbar" />
 
-            <com.labsgn.learn_android.layout.SlidingTabLayout
-                android:id="@+id/mainSlidingTab"
+            <it.neokree.materialtabs.MaterialTabHost
+                android:id="@+id/mainMaterialTab"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="48dp"
+                app:accentColor="@color/colorAccent"
+                app:hasIcons="true"
+                app:iconColor="#FFFFFF"
+                app:primaryColor="@color/colorPrimary" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/mainViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" >
+                android:layout_weight="1">
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
 
             </android.support.v4.view.ViewPager>
+
 
         </LinearLayout>
 

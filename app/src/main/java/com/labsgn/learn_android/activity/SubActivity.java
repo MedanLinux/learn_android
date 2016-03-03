@@ -24,7 +24,7 @@ import it.neokree.materialtabs.MaterialTabListener;
 public class SubActivity extends AppCompatActivity implements MaterialTabListener{
 
     private Toolbar toolbar;
-
+    //
     private MaterialTabHost materialTab;
     private ViewPager viewPager;
 
@@ -41,7 +41,6 @@ public class SubActivity extends AppCompatActivity implements MaterialTabListene
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         materialTab = (MaterialTabHost) findViewById(R.id.subMaterialTab);
         viewPager = (ViewPager) findViewById(R.id.subViewPager);
