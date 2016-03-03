@@ -1,4 +1,4 @@
-package com.labsgn.labsgn_learn_android;
+package com.labsgn.learn_android.activity;
 
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-public class Vector extends AppCompatActivity {
+import com.labsgn.learn_android.R;
+
+public class VectorActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ImageView imageView;

@@ -1,4 +1,4 @@
-package layout;
+package com.labsgn.learn_android.layout;
 
 /*
  * Copyright 2014 Google Inc. All rights reserved.

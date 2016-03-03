@@ -1,4 +1,4 @@
-package com.labsgn.labsgn_learn_android;
+package com.labsgn.learn_android.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.labsgn.learn_android.layout.MyFragment;
+import com.labsgn.learn_android.R;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;

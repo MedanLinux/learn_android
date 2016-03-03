@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.labsgn.labsgn_learn_android">
+    package="com.labsgn.learn_android">
 
-    <!--Todo 2. Setting permission -->
     <uses-permission android:name="android.permission.INTERNET"/>
-
+<!--Todo 2. Setting application name dengan android:name=".Application" -->
     <application
+        android:name=".Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.labsgn.learn_android.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,18 +20,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SubActivity"
+            android:name="com.labsgn.learn_android.activity.SubActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.labsgn.learn_android.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".Vector"
+            android:name="com.labsgn.learn_android.activity.VectorActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.labsgn.learn_android.activity.MainActivity" />
         </activity>
     </application>
 

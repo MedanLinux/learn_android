@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.labsgn.labsgn_learn_android.MainActivity">
+    tools:context=".activity.MainActivity">
 
     <include layout="@layout/statusbar" />
 
@@ -24,7 +24,7 @@
                 android:id="@+id/mainToolbar"
                 layout="@layout/toolbar" />
 
-            <layout.SlidingTabLayout
+            <com.labsgn.learn_android.layout.SlidingTabLayout
                 android:id="@+id/mainSlidingTab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -45,7 +45,7 @@
 
         <fragment
             android:id="@+id/mainFragment"
-            android:name="layout.MainFragment"
+            android:name="com.labsgn.learn_android.layout.MainFragment"
             android:layout_width="@dimen/drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"

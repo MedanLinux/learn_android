@@ -1,4 +1,4 @@
-package com.labsgn.labsgn_learn_android;
+package com.labsgn.learn_android.activity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -16,8 +16,11 @@ import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import layout.MainFragment;
-import layout.SlidingTabLayout;
+import com.labsgn.learn_android.layout.MyFragment;
+import com.labsgn.learn_android.R;
+
+import com.labsgn.learn_android.layout.MainFragment;
+import com.labsgn.learn_android.layout.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity {
 

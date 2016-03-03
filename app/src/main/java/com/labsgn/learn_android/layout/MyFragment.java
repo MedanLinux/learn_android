@@ -1,4 +1,4 @@
-package com.labsgn.labsgn_learn_android;
+package com.labsgn.learn_android.layout;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +13,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.labsgn.learn_android.R;
+import com.labsgn.learn_android.utlis.Logger;
+import com.labsgn.learn_android.utlis.VolleySingleton;
 
 /**
  * Created by rhony on 27/02/16.
@@ -42,20 +44,20 @@ public class MyFragment extends Fragment {
             textView.setText("Selected page : " + bundle.getInt("position"));
         }
 
-        //Todo 3. Melakukan query json menggunakan volley
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        //Todo 4. Setup requestQueue dari volleySingleton
+        RequestQueue requestQueue = VolleySingleton.getInstance().getRequestQueue();
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Logger.toast(getActivity(), response);
+                        Logger.log(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logger.toast(getActivity(), error.toString());
+                        Logger.log(error.toString());
                     }
                 }
         );

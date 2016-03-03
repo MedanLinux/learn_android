@@ -1,4 +1,4 @@
-package layout;
+package com.labsgn.learn_android.layout;
 
 
 import android.content.Context;
@@ -17,11 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.labsgn.labsgn_learn_android.Adapter;
-import com.labsgn.labsgn_learn_android.Information;
-import com.labsgn.labsgn_learn_android.R;
-import com.labsgn.labsgn_learn_android.SubActivity;
-import com.labsgn.labsgn_learn_android.Vector;
+import com.labsgn.learn_android.utlis.Adapter;
+import com.labsgn.learn_android.utlis.Information;
+import com.labsgn.learn_android.R;
+import com.labsgn.learn_android.activity.SubActivity;
+import com.labsgn.learn_android.activity.VectorActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +62,7 @@ public class MainFragment extends Fragment {
                         startActivity(new Intent(getActivity(), SubActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(getActivity(), Vector.class));
+                        startActivity(new Intent(getActivity(), VectorActivity.class));
                         break;
                 }
             }

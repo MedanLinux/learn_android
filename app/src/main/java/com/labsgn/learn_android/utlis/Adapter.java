@@ -1,4 +1,4 @@
-package com.labsgn.labsgn_learn_android;
+package com.labsgn.learn_android.utlis;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.labsgn.learn_android.R;
 
 import java.util.Collections;
 import java.util.List;
