@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.labsgn.learn_android.R;
+import com.labsgn.learn_android.pojo.Movie;
 import com.labsgn.learn_android.utlis.Constant;
 import com.labsgn.learn_android.utlis.Logger;
 import com.labsgn.learn_android.utlis.VolleySingleton;
@@ -22,9 +23,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//Todo 7. import key supaya kode lebih rapi & bersih :)
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_AUDIENCE_SCORE;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_ID;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_MOVIES;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_POSTERS;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_RATINGS;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_RELEASE_DATES;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_SYNOPSIS;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_THEATER;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_THUMBNAIL;
+import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_TITLE;
+
+//Todo 7. import key supaya kode lebih rapi & bersih :)
 
 
 /**
@@ -44,6 +59,10 @@ public class FragmentBoxOffice extends Fragment {
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private RequestQueue requestQueue;
+
+    //Todo 13
+    private ArrayList<Movie> listMovies = new ArrayList<>();
+    private java.text.DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public FragmentBoxOffice() {
         // Required empty public constructor
@@ -120,18 +139,59 @@ public class FragmentBoxOffice extends Fragment {
         }
         //Todo 8
         try {
-            if (response.has(KEY_MOVIES)){
                 StringBuilder data = new StringBuilder();
                 JSONArray arrayMovie = response.getJSONArray(KEY_MOVIES);
+
                 for (int i=0; i<arrayMovie.length(); i++){
+
                     JSONObject currentMovie = arrayMovie.getJSONObject(i);
-                    String id = currentMovie.getString(KEY_ID);
-                    data.append(id+"\n");
+
+                    long id = currentMovie.getLong(KEY_ID);
+
+                    String title = currentMovie.getString(KEY_TITLE);
+
+                    JSONObject objectReleaseDate = currentMovie.getJSONObject(KEY_RELEASE_DATES);
+                    String releaseDate = null;
+                    if (objectReleaseDate.has(KEY_THEATER)){
+                        releaseDate = objectReleaseDate.getString(KEY_THEATER);
+                    }
+                    else releaseDate = "N/A";
+
+                    JSONObject objectRatings = currentMovie.getJSONObject(KEY_RATINGS);
+                    int audienceScore = -1;
+                    if (objectRatings.has(KEY_AUDIENCE_SCORE)){
+                        audienceScore = objectRatings.getInt(KEY_AUDIENCE_SCORE);
+                    }
+
+                    String synopsis = currentMovie.getString(KEY_SYNOPSIS);
+
+                    JSONObject objectPosters = currentMovie.getJSONObject(KEY_POSTERS);
+                    String urlThumbnail = null;
+                    if (objectPosters.has(KEY_THUMBNAIL)){
+                        urlThumbnail = objectPosters.getString(KEY_THUMBNAIL);
+                    }
+                    else urlThumbnail = "N/A";
+
+                    //Todo 14. Simpan current Movie ke class movie
+                    Movie movie = new Movie();
+                    movie.setId(id);
+                    movie.setTitle(title);
+                    Date date = dateFormat.parse(releaseDate);
+                    movie.setReleaseDateTheater(date);
+                    movie.setAudienceScore(audienceScore);
+                    movie.setSynopsis(synopsis);
+                    movie.setUrlThumbnail(urlThumbnail);
+
+                    //Todo 15. Simpan data movie ke list movie
+                    listMovies.add(movie);
+
                 }
-                Logger.log_i(data.toString());
-            }
+                //Todo 16. Cetak data movie
+                //Logger.log_i(data.toString());
+                Logger.log_i(listMovies.toString());
+
         }
-        catch (JSONException e) {
+        catch (JSONException | ParseException e) {
             Logger.log_e(e.toString());
         }
     }
