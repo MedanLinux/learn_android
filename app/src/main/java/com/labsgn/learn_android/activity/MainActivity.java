@@ -17,7 +17,7 @@ import com.labsgn.learn_android.R;
 import com.labsgn.learn_android.layout.FragmentBoxOffice;
 import com.labsgn.learn_android.layout.FragmentSearch;
 import com.labsgn.learn_android.layout.FragmentUpcoming;
-import com.labsgn.learn_android.layout.MainFragment;
+import com.labsgn.learn_android.layout.MainDrawerFragment;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -27,10 +27,8 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
     private Toolbar toolbar;
     private ViewPager viewPager;
-    //Todo 6. Menggunakan materialTab :)
     private MaterialTabHost materialTab;
 
-    //Todo 4. Membuat index untuk fragment
     private static final int
             MOVIES_SEARCH   = 0,
             MOVIES_HITS     = 1,
@@ -76,10 +74,9 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        MainFragment drawerFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
+        MainDrawerFragment drawerFragment = (MainDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.mainFragment);
         drawerFragment.setUp((DrawerLayout) findViewById(R.id.mainDrawer), toolbar);
 
-        //Todo 7. Sedikit modifikasi untuk viewPager & adapter
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
             @Override
@@ -138,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
 
         @Override
         public Fragment getItem(int position) {
-            //Todo 5. Menampilkan fragment berdasarkan index posisi
             Fragment fragment = null;
 
             switch (position){

@@ -50,7 +50,7 @@
 
         <fragment
             android:id="@+id/mainFragment"
-            android:name="com.labsgn.learn_android.layout.MainFragment"
+            android:name="com.labsgn.learn_android.layout.MainDrawerFragment"
             android:layout_width="@dimen/drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"

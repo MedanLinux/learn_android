@@ -14,7 +14,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.labsgn.learn_android.R;
-import com.labsgn.learn_android.utlis.Logger;
 import com.labsgn.learn_android.utlis.VolleySingleton;
 
 /**
@@ -50,13 +49,13 @@ public class MyFragment extends Fragment {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Logger.log(response);
+                        //Logger.log(response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logger.log(error.toString());
+                        //Logger.log(error.toString());
                     }
                 }
         );

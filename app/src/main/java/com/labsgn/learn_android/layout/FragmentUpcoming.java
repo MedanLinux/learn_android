@@ -14,7 +14,6 @@ import com.labsgn.learn_android.R;
  * Use the {@link FragmentUpcoming#newInstance} factory method to
  * create an instance of this fragment.
  *
- * Todo 3. Membuat blank fragment
  */
 public class FragmentUpcoming extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

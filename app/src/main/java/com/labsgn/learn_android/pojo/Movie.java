@@ -4,7 +4,6 @@ import java.util.Date;
 
 /**
  * Created by rhony on 03/03/16.
- * Todo 8. Membuat setup dasar variable plain old java object (pojo) Movie
  */
 public class Movie {
     private long id;

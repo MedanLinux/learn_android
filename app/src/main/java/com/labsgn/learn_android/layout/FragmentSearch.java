@@ -14,7 +14,6 @@ import com.labsgn.learn_android.R;
  * Use the {@link FragmentSearch#newInstance} factory method to
  * create an instance of this fragment.
  *
- * Todo 2. Membuat blank fragment
  */
 public class FragmentSearch extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class MainDrawerFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -37,7 +37,7 @@ public class MainFragment extends Fragment {
 
     private Adapter myAdapter;
 
-    public MainFragment() {
+    public MainDrawerFragment() {
         // Required empty public constructor
     }
 
