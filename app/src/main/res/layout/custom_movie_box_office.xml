@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Todo 3. Membuat layout baru untuk movie -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/relativeLayout_paddingTop"
+    android:paddingEnd="@dimen/relativeLayout_paddingRight"
+    android:paddingLeft="@dimen/relativeLayout_paddingLeft"
+    android:paddingRight="@dimen/relativeLayout_paddingRight"
+    android:paddingStart="@dimen/relativeLayout_paddingLeft"
+    android:paddingBottom="@dimen/relativeLayout_paddingBottom"
+    >
+
+    <ImageView
+        android:id="@+id/movieThumbnail"
+        android:layout_width="@dimen/movie_thumbnail_width"
+        android:layout_height="@dimen/movie_thumbnail_height"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/movieTitle"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/movieThumbnail"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:alpha="0.87"
+        android:gravity="end"
+        android:padding="@dimen/textview_padding"
+        android:textSize="@dimen/size_text_primary" />
+
+    <TextView
+        android:id="@+id/movieReleaseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/movieTitle"
+        android:alpha="0.87"
+        android:padding="@dimen/textview_padding"
+        android:textSize="@dimen/size_text_secondary" />
+
+    <!--Todo 19. pastikan indicator false agar ratingbar read only -->
+    <RatingBar
+        android:id="@+id/movieAudienceScore"
+        style="@android:style/Widget.Holo.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/movieReleaseDate"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="0" />
+
+</RelativeLayout>

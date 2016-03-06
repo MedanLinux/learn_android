@@ -3,6 +3,8 @@ package com.labsgn.learn_android.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.labsgn.learn_android.R;
 import com.labsgn.learn_android.pojo.Movie;
+import com.labsgn.learn_android.utlis.AdapterBoxOffice;
 import com.labsgn.learn_android.utlis.Constant;
 import com.labsgn.learn_android.utlis.Logger;
 import com.labsgn.learn_android.utlis.VolleySingleton;
@@ -28,6 +30,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static com.labsgn.learn_android.utlis.Constant.URL_TYPE;
+import static com.labsgn.learn_android.utlis.Constant.URL_TYPE.BOX_OFFICE;
+import static com.labsgn.learn_android.utlis.Constant.getUrl;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_AUDIENCE_SCORE;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_ID;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_MOVIES;
@@ -38,9 +43,6 @@ import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_SYNOPSIS
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_THEATER;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_THUMBNAIL;
 import static com.labsgn.learn_android.utlis.Keys.EndpointBoxOffice.KEY_TITLE;
-
-//Todo 7. import key supaya kode lebih rapi & bersih :)
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,12 +59,15 @@ public class FragmentBoxOffice extends Fragment {
     private String mParam2;
 
     private VolleySingleton volleySingleton;
-    private ImageLoader imageLoader;
+   // private ImageLoader imageLoader;
     private RequestQueue requestQueue;
 
-    //Todo 13
     private ArrayList<Movie> listMovies = new ArrayList<>();
     private java.text.DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    private RecyclerView listMovieHits;
+
+    private AdapterBoxOffice adapterBoxOffice;
 
     public FragmentBoxOffice() {
         // Required empty public constructor
@@ -92,107 +97,140 @@ public class FragmentBoxOffice extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        volleySingleton = VolleySingleton.getInstance();
-        requestQueue = volleySingleton.getRequestQueue();
-
-        //Todo 4. Membuat method request
-        sendJsonRequest();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_box_office, container, false);
+
+        volleySingleton = VolleySingleton.getInstance();
+        requestQueue = volleySingleton.getRequestQueue();
+
+        //Todo 2. Setting Recycler View
+        View view = inflater.inflate(R.layout.fragment_box_office, container, false);
+        listMovieHits = (RecyclerView) view.findViewById(R.id.listMovieHits);
+        listMovieHits.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        //Todo 11. Setup adapterBoxOffice
+        adapterBoxOffice = new AdapterBoxOffice(getActivity());
+        listMovieHits.setAdapter(adapterBoxOffice);
+
+        //Todo 14
+        sendJsonRequest();
+
+        return view;
     }
 
-    private static String getRequestUrl(Constant.URL_TYPE url_type , int limit){
-        String url = Constant.getUrl(url_type);
+    private static String getRequestUrl(URL_TYPE url_type , int limit){
+        String url = getUrl(url_type);
         return url+limit;
     }
 
     private void sendJsonRequest(){
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
-                getRequestUrl(Constant.URL_TYPE.BOX_OFFICE, 10),
+                getRequestUrl(BOX_OFFICE, 30),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        //Todo 5. Setup method
-                        parseJsonResponse(response);
+                        //Todo 13
+                        listMovies = parseJsonResponse(response);
+                        adapterBoxOffice.setListMovies(listMovies);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Logger.log_e("ERROR ::: "+error.toString());
+                        Logger.log_e("FragmentBoxOffice",error.toString());
                     }
                 }
         );
         requestQueue.add(request);
     }
 
-    private void parseJsonResponse(JSONObject response) {
-        if (response == null || response.length() == 0){
-            return;
-        }
-        //Todo 8
-        try {
-                StringBuilder data = new StringBuilder();
+    //Todo 12. Modifikasi method untuk di buat ke dalam list
+    private ArrayList<Movie> parseJsonResponse(JSONObject response) {
+        ArrayList<Movie> listMovies = new ArrayList<>();
+        if (response != null || response.length() > 0){
+
+            long   id            = 0;
+            int    audienceScore = -1;
+            String title         = Constant.NA.NA,
+                   releaseDate   = Constant.NA.NA,
+                   synopsis      = Constant.NA.NA,
+                   urlThumbnail  = Constant.NA.NA;
+
+            try {
                 JSONArray arrayMovie = response.getJSONArray(KEY_MOVIES);
 
                 for (int i=0; i<arrayMovie.length(); i++){
 
                     JSONObject currentMovie = arrayMovie.getJSONObject(i);
 
-                    long id = currentMovie.getLong(KEY_ID);
-
-                    String title = currentMovie.getString(KEY_TITLE);
-
-                    JSONObject objectReleaseDate = currentMovie.getJSONObject(KEY_RELEASE_DATES);
-                    String releaseDate = null;
-                    if (objectReleaseDate.has(KEY_THEATER)){
-                        releaseDate = objectReleaseDate.getString(KEY_THEATER);
-                    }
-                    else releaseDate = "N/A";
-
-                    JSONObject objectRatings = currentMovie.getJSONObject(KEY_RATINGS);
-                    int audienceScore = -1;
-                    if (objectRatings.has(KEY_AUDIENCE_SCORE)){
-                        audienceScore = objectRatings.getInt(KEY_AUDIENCE_SCORE);
+                    if (currentMovie.has(KEY_ID) && !currentMovie.isNull(KEY_ID )){
+                        id = currentMovie.getLong(KEY_ID);
                     }
 
-                    String synopsis = currentMovie.getString(KEY_SYNOPSIS);
-
-                    JSONObject objectPosters = currentMovie.getJSONObject(KEY_POSTERS);
-                    String urlThumbnail = null;
-                    if (objectPosters.has(KEY_THUMBNAIL)){
-                        urlThumbnail = objectPosters.getString(KEY_THUMBNAIL);
+                    if (currentMovie.has(KEY_TITLE) && !currentMovie.isNull(KEY_TITLE)){
+                        title = currentMovie.getString(KEY_TITLE);
                     }
-                    else urlThumbnail = "N/A";
 
-                    //Todo 14. Simpan current Movie ke class movie
+                    if (currentMovie.has(KEY_RELEASE_DATES) && !currentMovie.isNull(KEY_RELEASE_DATES)){
+                        JSONObject objectReleaseDate = currentMovie.getJSONObject(KEY_RELEASE_DATES);
+                        if (objectReleaseDate != null && objectReleaseDate.has(KEY_THEATER)
+                                && !objectReleaseDate.isNull(KEY_THEATER))
+                        {
+                            releaseDate = objectReleaseDate.getString(KEY_THEATER);
+                        }
+                    }
+
+                    if (currentMovie.has(KEY_RATINGS) && !currentMovie.isNull(KEY_RATINGS)){
+                        JSONObject objectRatings = currentMovie.getJSONObject(KEY_RATINGS);
+                        if (objectRatings != null && objectRatings.has(KEY_AUDIENCE_SCORE)
+                                && !objectRatings.isNull(KEY_AUDIENCE_SCORE))
+                        {
+                            audienceScore = objectRatings.getInt(KEY_AUDIENCE_SCORE);
+                        }
+                    }
+
+                    if (currentMovie.has(KEY_SYNOPSIS) && !currentMovie.isNull(KEY_SYNOPSIS)){
+                        synopsis = currentMovie.getString(KEY_SYNOPSIS);
+                    }
+
+                    if (currentMovie.has(KEY_POSTERS) && !currentMovie.isNull(KEY_POSTERS)){
+                        JSONObject objectPosters = currentMovie.getJSONObject(KEY_POSTERS);
+                        if (objectPosters != null && objectPosters.has(KEY_THUMBNAIL)
+                                && !objectPosters.isNull(KEY_THUMBNAIL))
+                        {
+                            urlThumbnail = objectPosters.getString(KEY_THUMBNAIL);
+                        }
+                    }
+
                     Movie movie = new Movie();
                     movie.setId(id);
                     movie.setTitle(title);
-                    Date date = dateFormat.parse(releaseDate);
+                    Date date = null;
+                    try{
+                        date = dateFormat.parse(releaseDate);
+                    }catch (ParseException e){
+                        Logger.log_e("FragmentBoxOffice", e.toString());
+                    }
                     movie.setReleaseDateTheater(date);
                     movie.setAudienceScore(audienceScore);
                     movie.setSynopsis(synopsis);
                     movie.setUrlThumbnail(urlThumbnail);
 
-                    //Todo 15. Simpan data movie ke list movie
-                    listMovies.add(movie);
-
+                    if (id != -1 && !title.equals(Constant.NA.NA)){
+                        listMovies.add(movie);
+                    }
                 }
-                //Todo 16. Cetak data movie
-                //Logger.log_i(data.toString());
-                Logger.log_i(listMovies.toString());
+                //Logger.log_i("FragmentBoxOffice",listMovies.toString());
 
+            }
+            catch (JSONException e) {
+                Logger.log_e("FragmentBoxOffice",e.toString());
+            }
         }
-        catch (JSONException | ParseException e) {
-            Logger.log_e(e.toString());
-        }
+        return listMovies;
     }
 }

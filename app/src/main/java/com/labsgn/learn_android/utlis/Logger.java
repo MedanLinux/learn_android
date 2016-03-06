@@ -9,12 +9,12 @@ import android.widget.Toast;
  */
 public class Logger {
 
-    public static void log_i(String message) {
-        Log.i("TAG", " "+message);
+    public static void log_i(String className, String message) {
+        Log.i("TAG", " class : "+className+" \nInformation : "+message);
     }
 
-    public static void log_e(String message) {
-        Log.e("TAG", " "+message);
+    public static void log_e(String className, String message) {
+        Log.e("TAG", " class : "+className+" \nError : "+message);
     }
 
     public static void toast(Context context, String message) {

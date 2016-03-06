@@ -11,19 +11,21 @@ public final class Constant {
 
     private static final String URL_BOX_OFFICE = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json";
 
-    //Todo 1. Penambahan constant baru
     private static final String CHAR_Q = "?";
     private static final String CHAR_AND = "&";
 
     private static final String PARAM_API_KEY = "apikey=";
     private static final String PARAM_LIMIT = "limit=";
 
-    //Todo 2. Setup Tipe url yang akan di pakai
+    //Todo 15. Menyiapkan interface untuk constant baru
+    public interface NA{
+        String NA = "NA";
+    }
+
     public enum URL_TYPE {
         BOX_OFFICE, SEARCH, UPCOMING
     }
 
-    //Todo 3. Membuat konstruktor url
     private Constant(URL_TYPE url_type){
         currentUrl = null;
         switch (url_type){

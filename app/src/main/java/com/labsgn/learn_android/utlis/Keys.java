@@ -2,7 +2,6 @@ package com.labsgn.learn_android.utlis;
 
 /**
  * Created by rhony on 04/03/16.
- * Todo 6. Setup interface keys
  */
 public interface Keys {
     public interface EndpointBoxOffice{

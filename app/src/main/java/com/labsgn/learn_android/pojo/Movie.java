@@ -17,12 +17,10 @@ public class Movie {
     private String urlReviews;
     private String urlSimilar;
 
-    //Todo 9
     public Movie (){
 
     }
 
-    //Todo 10
     public Movie(long id,
                  String title,
                  Date releaseDateTheater,
@@ -45,7 +43,6 @@ public class Movie {
         this.urlSimilar = urlSimilar;
     }
 
-    //Todo 11. Membuat get & set
     public long getId() {
         return id;
     }
@@ -126,7 +123,6 @@ public class Movie {
         this.urlSimilar = urlSimilar;
     }
 
-    //Todo 12. Membuat method toString untuk merangkum data Json (sementara sampai di thumbail)
     @Override
     public String toString() {
         return "\nID: " + id +
