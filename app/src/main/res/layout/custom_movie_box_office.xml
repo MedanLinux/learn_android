@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Todo 3. Membuat layout baru untuk movie -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/relativeLayout_paddingTop"
+    android:paddingBottom="@dimen/relativeLayout_paddingBottom"
     android:paddingEnd="@dimen/relativeLayout_paddingRight"
     android:paddingLeft="@dimen/relativeLayout_paddingLeft"
     android:paddingRight="@dimen/relativeLayout_paddingRight"
     android:paddingStart="@dimen/relativeLayout_paddingLeft"
-    android:paddingBottom="@dimen/relativeLayout_paddingBottom"
-    >
+    android:paddingTop="@dimen/relativeLayout_paddingTop">
 
     <ImageView
         android:id="@+id/movieThumbnail"
@@ -22,7 +20,6 @@
 
     <TextView
         android:id="@+id/movieTitle"
-        style="@style/Base.TextAppearance.AppCompat.Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -48,7 +45,6 @@
         android:padding="@dimen/textview_padding"
         android:textSize="@dimen/size_text_secondary" />
 
-    <!--Todo 19. pastikan indicator false agar ratingbar read only -->
     <RatingBar
         android:id="@+id/movieAudienceScore"
         style="@android:style/Widget.Holo.RatingBar.Small"

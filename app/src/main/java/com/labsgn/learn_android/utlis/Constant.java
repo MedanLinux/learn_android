@@ -17,7 +17,6 @@ public final class Constant {
     private static final String PARAM_API_KEY = "apikey=";
     private static final String PARAM_LIMIT = "limit=";
 
-    //Todo 15. Menyiapkan interface untuk constant baru
     public interface NA{
         String NA = "NA";
     }

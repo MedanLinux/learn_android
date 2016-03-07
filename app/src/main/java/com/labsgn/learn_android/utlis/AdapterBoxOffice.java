@@ -20,7 +20,6 @@ import java.util.Date;
 
 /**
  * Created by rhony on 06/03/16.
- * Todo 4. Setup adapter untuk FragmentBoxOffice
  */
 public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.ViewHolderBoxOffice> {
 
@@ -30,14 +29,12 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
     private ImageLoader imageLoader;
     private java.text.DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    //Todo 6. Setup constructor
     public AdapterBoxOffice(Context context){
         layoutInflater = LayoutInflater.from(context);
         volleySingleton = VolleySingleton.getInstance();
         imageLoader = volleySingleton.getImageLoader();
     }
 
-    //Todo 7
     @Override
     public ViewHolderBoxOffice onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.custom_movie_box_office, parent, false);
@@ -45,14 +42,11 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
         return viewHolder;
     }
 
-    //Todo 9
     @Override
     public void onBindViewHolder(final ViewHolderBoxOffice holder, int position) {
         Movie currentMovie = listMovies.get(position);
         holder.movieTitle.setText(currentMovie.getTitle());
 
-        //Todo 17. Mengkonversi string ke format Date
-        //holder.movieReleaseDate.setText(currentMovie.getReleaseDateTheater().toString());
         Date movieReleaseDate = currentMovie.getReleaseDateTheater();
         if (movieReleaseDate != null){
             String formattedDate = dateFormat.format(movieReleaseDate);
@@ -61,7 +55,6 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
             holder.movieReleaseDate.setText(Constant.NA.NA);
         }
 
-        //Todo 18. Antisipasi juga jika tidak ada rating maka ratingBar di transparan 50%
         int audienceScore = currentMovie.getAudienceScore();
         if (audienceScore <= 0){
             holder.movieAudienceScore.setRating(0.0f);
@@ -75,7 +68,6 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
         loadImages(urlThumbnail, holder);
     }
 
-    //Todo 16. Membuat method baru untuk me-load images thumbnail ke viewholder
     private void loadImages(String urlThumbnail, final ViewHolderBoxOffice holder){
         if (!urlThumbnail.equals(Constant.NA.NA)){
             imageLoader.get(urlThumbnail, new ImageLoader.ImageListener() {
@@ -92,19 +84,16 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
         }
     }
 
-    //Todo 10. Tampilkan daftar movie sebanyak listMovies
     @Override
     public int getItemCount() {
         return listMovies.size();
     }
 
-    //Todo 8
     public void setListMovies(ArrayList<Movie> movieArrayList){
         this.listMovies = movieArrayList;
         notifyItemChanged(0, movieArrayList.size());
     }
 
-    //Todo 5. Membuat sub class
     static class ViewHolderBoxOffice extends RecyclerView.ViewHolder{
 
         private ImageView movieThumbnail;
