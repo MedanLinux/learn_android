@@ -4,8 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/learn-android-slidenerd.iml" filepath="$PROJECT_DIR$/learn-android-slidenerd.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-design/material-design.iml" filepath="$PROJECT_DIR$/material-design/material-design.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tabs/tabs.iml" filepath="$PROJECT_DIR$/tabs/tabs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/viewpagerdeveloper/viewpagerdeveloper.iml" filepath="$PROJECT_DIR$/viewpagerdeveloper/viewpagerdeveloper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewpager-animations/viewpager-animations.iml" filepath="$PROJECT_DIR$/viewpager-animations/viewpager-animations.iml" />
     </modules>
   </component>
 </project>

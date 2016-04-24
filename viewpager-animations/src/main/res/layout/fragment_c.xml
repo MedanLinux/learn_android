@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_purple">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/fragmentC_bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image3"
+        android:scaleType="fitCenter"/>
+
+</android.support.v7.widget.LinearLayoutCompat>

@@ -1,1 +1,1 @@
-include ':material-design', ':tabs', ':viewpagerdeveloper'
+include ':material-design', ':viewpager-animations'
